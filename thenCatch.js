@@ -8,11 +8,16 @@ Otherwise, you will get to celebrate at the park like you wanted!
 How can you create a Promise for that situation?
 */
 
-let isRaining = true;
+let isRaining = false;
 
 const weather = new Promise((resolve, reject) => {
-    
+  if (!isRaining) {
+    resolve("The party will be in the park!");
+  } else { 
+    reject("Oh no! The party will be in my apartment.");
+  }
 });
+console.log(weather); 
 
 // 1. The promise above is incomplete. On line 14 inside the Promise, create conditions for the promise to resolve or reject. The steps for doing so are below (a-c)
 // a) The promise should check if raining is true or false and carry out different code according to the condition (if... else)
@@ -22,3 +27,13 @@ const weather = new Promise((resolve, reject) => {
 // 2. Consume the promise using then() and catch(). The steps for doing so are below (a-b)
 // a) Using weather.then(), take the value passed to .then from the Promise and console log it. 
 // b) Using .catch, take the value passed to .catch from the Promise and console log it.
+
+weather 
+  .then((result) => { 
+    console.log(result);
+
+  })
+  .catch((error) => {
+    console.log(error);
+
+  })
